@@ -14,6 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ### Fixed
 
+- Landscape cover images (for example 16:9) now fill the card instead of leaving side bars; portrait box art is still shown whole.
 - Nintendo Switch 2 now has its own logo instead of the Switch 1 one (from Wikimedia Commons, public domain).
 - A form field's validation error now disappears as soon as the field is edited.
 

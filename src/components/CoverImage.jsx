@@ -5,6 +5,10 @@ import { findBrand, gameBrandName } from '@/lib/brands'
 import { steamCoverUrl } from '@/features/videogames/collection'
 import { BRAND_ICONS } from './brand-icons'
 
+// From this width/height ratio on, an image counts as landscape (16:9 is 1.78,
+// the card frame is 460/215 = 2.14). 4:3 images (1.33) are still shown whole.
+const LANDSCAPE_RATIO = 1.5
+
 // Image sources in order of preference: the game's own coverUrl, then Steam.
 const coverSources = (game) =>
   [game.coverUrl, game.steamAppId && steamCoverUrl(game.steamAppId)].filter(Boolean)
@@ -15,6 +19,9 @@ const coverSources = (game) =>
 export function CoverImage({ game, className }) {
   const sources = coverSources(game)
   const [failedCount, setFailedCount] = useState(0)
+  // Landscape images fill the frame (a little is cropped top/bottom); portrait or
+  // squarish ones (box art) are shown whole over the blurred copy.
+  const [fill, setFill] = useState(false)
   const src = sources[failedCount]
   const brand = findBrand(gameBrandName(game))
   const icon = brand && BRAND_ICONS[brand.icon]
@@ -31,7 +38,11 @@ export function CoverImage({ game, className }) {
             loading="lazy"
             referrerPolicy="no-referrer"
             onError={() => setFailedCount((n) => n + 1)}
-            className="relative size-full object-contain"
+            onLoad={(event) => {
+              const { naturalWidth, naturalHeight } = event.currentTarget
+              setFill(naturalHeight > 0 && naturalWidth / naturalHeight >= LANDSCAPE_RATIO)
+            }}
+            className={cn('relative size-full', fill ? 'object-cover' : 'object-contain')}
           />
         </>
       ) : (
