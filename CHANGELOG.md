@@ -7,6 +7,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ### Added
 
+- Docker image: multi-stage `Dockerfile` (Node build + unprivileged nginx), `nginx.conf` with the `/api` proxy to
+  `bifrost-app`, SPA fallback and long-lived caching of fingerprinted assets, and a `.dockerignore`.
 - Cover URL field in the game form (`coverUrl`, requires Bifröst with cover support), with a live preview. Clearing it removes the cover.
 - Covers now try the game's own `coverUrl` first, then the Steam cover, then the platform placeholder. Portrait box art is shown whole over a blurred background.
 
