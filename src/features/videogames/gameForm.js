@@ -13,6 +13,7 @@ export function toFormValues(game) {
     isPlatinum: game?.isPlatinum ?? false,
     multiplayer: game?.multiplayer ?? false,
     hoursPlayed: game?.hoursPlayed ?? '',
+    coverUrl: game?.coverUrl ?? '',
   }
 }
 
@@ -25,8 +26,14 @@ export function validate(values) {
     errors.videogameYear = 'Usa 4 cifras, por ejemplo 2019.'
   const hours = String(values.hoursPlayed).trim()
   if (hours && !/^\d+$/.test(hours)) errors.hoursPlayed = 'Un número entero de 0 en adelante (o vacío = desconocidas).'
+  const cover = values.coverUrl.trim()
+  if (cover && (!isHttpUrl(cover) || cover.length > 2048))
+    errors.coverUrl = 'Debe ser una dirección http:// o https:// (máximo 2048 caracteres).'
   return errors
 }
+
+// Same rule as the backend: http(s):// followed by no spaces.
+export const isHttpUrl = (text) => /^https?:\/\/\S+$/.test(text)
 
 // Full body as the API expects it: 0/1 for isDigital/isCompleted/isPlatinum,
 // boolean for multiplayer, null for "unknown hours" or "no store".
@@ -44,6 +51,7 @@ function toBody(values) {
     isPlatinum: values.isPlatinum ? 1 : 0,
     multiplayer: values.multiplayer,
     hoursPlayed: hours === '' ? null : Number(hours),
+    coverUrl: values.coverUrl.trim() || null, // null clears it on PATCH
   }
 }
 

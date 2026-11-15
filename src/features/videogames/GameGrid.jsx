@@ -15,7 +15,7 @@ export function GameGrid({ games, onSelect }) {
             onClick={() => onSelect(game)}
             className="group flex h-full w-full flex-col overflow-hidden rounded-xl border bg-card text-left transition hover:-translate-y-0.5 hover:border-primary/60 hover:bifrost-glow focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
           >
-            <CoverImage game={game} className="transition group-hover:brightness-110" />
+            <CoverImage key={game.coverUrl ?? ''} game={game} className="transition group-hover:brightness-110" />
             <div className="flex flex-1 flex-col gap-2 p-3">
               <div className="flex items-start gap-2.5">
                 <BrandLogo name={gameBrandName(game)} className="mt-0.5 size-8" />

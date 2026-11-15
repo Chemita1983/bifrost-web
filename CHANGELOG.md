@@ -5,6 +5,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+### Added
+
+- Cover URL field in the game form (`coverUrl`, requires Bifröst with cover support), with a live preview. Clearing it removes the cover.
+- Covers now try the game's own `coverUrl` first, then the Steam cover, then the platform placeholder. Portrait box art is shown whole over a blurred background.
+
+### Fixed
+
+- A form field's validation error now disappears as soon as the field is edited.
+
 ## [0.1.0] - 2026-11-15
 
 ### Added
