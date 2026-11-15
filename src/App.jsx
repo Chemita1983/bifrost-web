@@ -1,122 +1,39 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { Gamepad2, Monitor, Store } from 'lucide-react'
+import { ThemeToggle } from '@/components/ThemeToggle'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { CatalogPage } from '@/features/catalogs/CatalogPage'
+import { SteamSyncButton } from '@/features/steam/SteamSyncButton'
+import { GamesPage } from '@/features/videogames/GamesPage'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+// Single page: a header plus three tabs. No router needed yet.
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <Tabs defaultValue="games" className="min-h-dvh gap-0">
+      <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
+        <div className="h-0.5 bifrost-gradient" aria-hidden="true" />
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3">
+          <div className="flex items-center gap-2">
+            <div className="grid size-9 place-items-center rounded-lg bifrost-gradient text-white shadow-lg">
+              <Gamepad2 className="size-5" aria-hidden="true" />
+            </div>
+            <span className="bg-clip-text text-xl font-black tracking-tight text-transparent bifrost-gradient">Bifröst</span>
+          </div>
+          <TabsList className="order-last w-full sm:order-none sm:ml-6 sm:w-auto">
+            <TabsTrigger value="games"><Gamepad2 /> Juegos</TabsTrigger>
+            <TabsTrigger value="platforms"><Monitor /> Plataformas</TabsTrigger>
+            <TabsTrigger value="stores"><Store /> Tiendas</TabsTrigger>
+          </TabsList>
+          <div className="ml-auto flex items-center gap-1">
+            <SteamSyncButton />
+            <ThemeToggle />
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      </header>
+      <main className="mx-auto w-full max-w-7xl px-4 py-6">
+        <TabsContent value="games"><GamesPage /></TabsContent>
+        <TabsContent value="platforms"><CatalogPage type="platforms" /></TabsContent>
+        <TabsContent value="stores"><CatalogPage type="stores" /></TabsContent>
+      </main>
+    </Tabs>
   )
 }
-
-export default App
