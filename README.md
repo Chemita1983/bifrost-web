@@ -121,7 +121,7 @@ Each feature keeps its raw HTTP calls in `api.js` and its TanStack Query hooks i
 - [Tailwind CSS 4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) (Radix primitives, [Lucide](https://lucide.dev) icons)
 - [TanStack Query 5](https://tanstack.com/query) for data fetching and caching
 - [Sonner](https://sonner.emilkowal.ski) for toasts
-- Brand logos from [Simple Icons](https://simpleicons.org) and [CoreUI Brand Icons](https://coreui.io/icons) (both CC0), embedded as SVG paths in [`src/components/brand-icons.js`](src/components/brand-icons.js)
+- Brand logos from [Simple Icons](https://simpleicons.org), [CoreUI Brand Icons](https://coreui.io/icons) (both CC0) and [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nintendo_Switch_2_logo.svg) (public domain), embedded as SVG paths in [`src/components/brand-icons.js`](src/components/brand-icons.js)
 
 ## 🗺️ Roadmap
 

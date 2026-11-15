@@ -10,6 +10,7 @@ const BRANDS = [
   { match: /playstation\s*2|\bps2\b/i, icon: 'playstation', color: '#0B1E6B' },
   { match: /playstation\s*store|\bpsn\b/i, icon: 'playstation', color: '#0070D1' },
   { match: /playstation/i, icon: 'playstation', color: '#5B6770' },
+  { match: /switch\s*2/i, icon: 'nintendo-switch-2', color: '#E60012' },
   { match: /switch/i, icon: 'nintendo-switch', color: '#E60012' },
   { match: /wii\s*u/i, icon: 'wiiu', color: '#009AC7' },
   { match: /\bwii\b/i, icon: 'wii', color: '#34BEED' },
