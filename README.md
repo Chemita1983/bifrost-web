@@ -65,6 +65,16 @@ If Bifröst runs somewhere else, point the dev proxy to it:
 BIFROST_API_URL=http://localhost:9090 npm run dev
 ```
 
+### Run it with Docker
+
+The [`Dockerfile`](Dockerfile) builds the app (Node) and serves the static files with nginx ([`nginx.conf`](nginx.conf)), which also forwards `/api/...` to the `bifrost-app` container. It is meant to run together with the backend: the `web` service of the [Bifröst](https://github.com/Chemita1983/Bifrost) `docker-compose.yml` builds this folder (variable `WEB_PATH`), so from the Bifröst repository:
+
+```bash
+docker compose --env-file bifrost.env up -d --build
+```
+
+Open <http://localhost:3000>. After changing the frontend code, rebuild only this service with `docker compose --env-file bifrost.env up -d --build web`.
+
 ### Scripts
 
 | Command | What it does |
@@ -83,7 +93,7 @@ Browser ──► /api/videogames ──► (Vite proxy) ──► http://localh
 ```
 
 - In development this is the `server.proxy` in [`vite.config.js`](vite.config.js).
-- In Docker (planned) an nginx container will do the same.
+- In Docker, nginx does the same: `/api/` is proxied to `http://bifrost-app:8080/` through the Compose network.
 
 The API has no pagination and no endpoint for a single game, so the app loads the whole collection once, caches it with TanStack Query and does all the filtering, sorting and detail views in the browser. After any create, edit or delete the cache is refreshed automatically.
 
@@ -115,7 +125,7 @@ Each feature keeps its raw HTTP calls in `api.js` and its TanStack Query hooks i
 
 ## 🗺️ Roadmap
 
-- [ ] Docker image (multi-stage build + nginx with the `/api` proxy) and a `web` service in the Bifröst Docker Compose.
+- [x] Docker image (multi-stage build + nginx with the `/api` proxy) and a `web` service in the Bifröst Docker Compose.
 - [ ] Automated tests with Vitest + Testing Library.
 - [ ] Form validation with React Hook Form + Zod if the forms grow.
 
