@@ -1,7 +1,8 @@
 // Brand logos for platforms and digital stores (generated, do not edit by hand).
-// Sources, both CC0 1.0 (public domain):
+// Sources (all public domain):
 // - Simple Icons (https://simpleicons.org): PlayStation, Steam, Epic Games, GOG.com, Battle.net.
 // - CoreUI Brand Icons (https://coreui.io/icons): Nintendo, Switch, 3DS, Wii, Wii U, Xbox, Microsoft, Windows.
+// - Wikimedia Commons, File:Nintendo_Switch_2_logo.svg (public domain): Switch 2 (Joy-Con icon and "2" only).
 // The logos are trademarks of their respective owners.
 export const BRAND_ICONS = {
   "playstation": {
@@ -55,5 +56,6 @@ export const BRAND_ICONS = {
   "windows": {
     "viewBox": "0 0 32 32",
     "path": "m0 4.599l13-1.796v12.599H0zm14.599-2L32 0v15.197H14.599zM0 16.803h13v12.599L0 27.599zm14.599 0H32V32l-17.197-2.401z"
-  }
+  },
+  "nintendo-switch-2": {"viewBox": "32.51 -3.86 196.83 196.83", "path": "M83.3 45.87H61.67c-14.01 0-25.37 11.36-25.37 25.37v48.2c0 14.01 11.36 25.37 25.37 25.37H83.3c.4 0 .73-.32.73-.73V46.59c0-.4-.32-.72-.73-.72m-7.26 90.96H61.67c-4.65 0-9.01-1.81-12.3-5.09s-5.09-7.65-5.09-12.3v-48.2c0-4.65 1.81-9.02 5.09-12.3a17.3 17.3 0 0 1 12.3-5.09h14.37v82.99ZM61.01 66.25c5.14 0 9.3 4.17 9.3 9.3s-4.16 9.3-9.3 9.3-9.3-4.17-9.3-9.3 4.17-9.3 9.3-9.3m48.86-20.38H94.56a.64.64 0 0 0-.64.65v97.57c0 .4.32.73.72.73h15.23c14.01 0 25.37-11.36 25.37-25.37v-48.2c0-14.01-11.36-25.37-25.37-25.37Zm3.63 64.42c-5.53 0-10-4.48-10-10s4.48-10 10-10 10 4.48 10 10-4.48 10-10 10M151.91 144.81V127.8c1.76-1.44 8.4-7.16 15.43-13.2 6.32-5.44 12.63-10.89 19.07-16.18 4.85-3.99 14.07-11.31 14.36-18.49.35-8.44-5.64-13.91-14.58-13.91-5.33 0-11.58 2.96-15.37 6.18s-8.65 7.38-8.65 7.38L148.16 64.4c11.89-13.33 24.68-20.09 38-20.09 28.4-.7 49.8 30.95 28.2 55.76-7.84 8.64-16.73 16.73-25.88 23.92h37.08v20.82h-73.67z"}
 }

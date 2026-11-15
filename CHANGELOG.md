@@ -14,6 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ### Fixed
 
+- Nintendo Switch 2 now has its own logo instead of the Switch 1 one (from Wikimedia Commons, public domain).
 - A form field's validation error now disappears as soon as the field is edited.
 
 ## [0.1.0] - 2026-11-15
