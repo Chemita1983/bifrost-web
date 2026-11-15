@@ -1,6 +1,7 @@
 import { ArrowDownAZ, ArrowUpZA, Search, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { BrandLogo } from '@/components/BrandLogo'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { ALL, EMPTY_FILTERS, SORT_OPTIONS, countActiveFilters } from './collection'
 
@@ -13,6 +14,7 @@ function FilterSelect({ label, value, onChange, options, className }) {
       <SelectContent>
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value}>
+            {option.icon}
             {option.label}
           </SelectItem>
         ))}
@@ -53,7 +55,11 @@ export function GameFilters({ filters, onFiltersChange, sort, onSortChange, plat
           onChange={set('platformId')}
           options={[
             { value: ALL, label: 'Plataforma: todas' },
-            ...platforms.map((p) => ({ value: String(p.id), label: p.platformName })),
+            ...platforms.map((p) => ({
+              value: String(p.id),
+              label: p.platformName,
+              icon: <BrandLogo name={p.platformName} className="size-5 rounded" />,
+            })),
           ]}
           className="w-full sm:w-48"
         />
@@ -72,6 +78,12 @@ export function GameFilters({ filters, onFiltersChange, sort, onSortChange, plat
           value={filters.completed}
           onChange={set('completed')}
           options={yesNo('Completado: todos', 'Completados', 'Sin completar')}
+        />
+        <FilterSelect
+          label="Platino"
+          value={filters.platinum}
+          onChange={set('platinum')}
+          options={yesNo('Platino: todos', 'Platinados', 'Sin platino')}
         />
         <FilterSelect
           label="Multijugador"

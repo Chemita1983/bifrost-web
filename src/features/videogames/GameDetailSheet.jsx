@@ -1,4 +1,5 @@
 import { Pencil, Trash2 } from 'lucide-react'
+import { BrandLogo } from '@/components/BrandLogo'
 import { CoverImage } from '@/components/CoverImage'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from '@/components/ui/sheet'
@@ -33,9 +34,21 @@ export function GameDetailSheet({ game, onOpenChange, onEdit, onDelete }) {
               <GameBadges game={game} />
             </SheetHeader>
             <dl className="px-4 text-sm">
-              <Field label="Plataforma">{game.platform?.platformName}</Field>
+              <Field label="Plataforma">
+                <span className="inline-flex items-center gap-2">
+                  <BrandLogo name={game.platform?.platformName} className="size-6" />
+                  {game.platform?.platformName}
+                </span>
+              </Field>
               <Field label="Formato">{game.isDigital ? 'Digital' : 'Físico'}</Field>
-              {game.isDigital && <Field label="Tienda">{game.digitalPlatform?.digitalPlatformName}</Field>}
+              {game.isDigital && (
+                <Field label="Tienda">
+                  <span className="inline-flex items-center gap-2">
+                    <BrandLogo name={game.digitalPlatform?.digitalPlatformName} kind="store" className="size-6" />
+                    {game.digitalPlatform?.digitalPlatformName}
+                  </span>
+                </Field>
+              )}
               <Field label="Tipo">{game.videogameType}</Field>
               <Field label="Año">{game.videogameYear}</Field>
               <Field label="Compañía">{game.companyName}</Field>

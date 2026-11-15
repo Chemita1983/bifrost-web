@@ -7,6 +7,7 @@ export const EMPTY_FILTERS = {
   platformId: ALL,
   format: ALL, // 'digital' | 'physical'
   completed: ALL, // 'yes' | 'no'
+  platinum: ALL, // 'yes' | 'no'
   multiplayer: ALL, // 'yes' | 'no'
   type: ALL,
 }
@@ -28,6 +29,7 @@ export function filterGames(games, filters) {
       (filters.platformId === ALL || String(game.platform?.id) === filters.platformId) &&
       (filters.format === ALL || (filters.format === 'digital') === game.isDigital) &&
       matchesYesNo(filters.completed, game.isCompleted) &&
+      matchesYesNo(filters.platinum, game.isPlatinum) &&
       matchesYesNo(filters.multiplayer, game.multiplayer) &&
       (filters.type === ALL || game.videogameType === filters.type),
   )

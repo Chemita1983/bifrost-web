@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Pencil, Plus, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { BrandLogo } from '@/components/BrandLogo'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { QueryError } from '@/components/QueryState'
 import { Button } from '@/components/ui/button'
@@ -140,7 +141,12 @@ export function CatalogPage({ type }) {
             <TableBody>
               {items.data.map((item) => (
                 <TableRow key={item.id}>
-                  <TableCell className="font-medium">{item[config.nameField]}</TableCell>
+                  <TableCell className="font-medium">
+                    <span className="flex items-center gap-3">
+                      <BrandLogo name={item[config.nameField]} kind={type === 'stores' ? 'store' : 'platform'} className="size-8" />
+                      {item[config.nameField]}
+                    </span>
+                  </TableCell>
                   {columns.map((f) => (
                     <TableCell key={f.name} className="hidden text-muted-foreground sm:table-cell">{item[f.name] || '—'}</TableCell>
                   ))}

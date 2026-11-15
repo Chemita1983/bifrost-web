@@ -1,4 +1,5 @@
 import { Clock } from 'lucide-react'
+import { BrandLogo } from '@/components/BrandLogo'
 import { CoverImage } from '@/components/CoverImage'
 import { GameBadges } from './GameBadges'
 
@@ -15,11 +16,14 @@ export function GameGrid({ games, onSelect }) {
           >
             <CoverImage game={game} className="transition group-hover:brightness-110" />
             <div className="flex flex-1 flex-col gap-2 p-3">
-              <div>
-                <h3 className="line-clamp-1 font-semibold" title={game.videogameName}>{game.videogameName}</h3>
-                <p className="line-clamp-1 text-xs text-muted-foreground">
-                  {[game.platform?.platformName, game.videogameYear, game.videogameType].filter(Boolean).join(' · ')}
-                </p>
+              <div className="flex items-start gap-2.5">
+                <BrandLogo name={game.platform?.platformName} className="mt-0.5 size-8" />
+                <div className="min-w-0">
+                  <h3 className="line-clamp-1 font-semibold" title={game.videogameName}>{game.videogameName}</h3>
+                  <p className="line-clamp-1 text-xs text-muted-foreground">
+                    {[game.platform?.platformName, game.videogameYear, game.videogameType].filter(Boolean).join(' · ')}
+                  </p>
+                </div>
               </div>
               <GameBadges game={game} />
               {game.hoursPlayed !== undefined && (
