@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUp, ArrowUpDown, CheckCircle2, Trophy, Users } from 'lucide-react'
 import { BrandLogo } from '@/components/BrandLogo'
+import { gameBrandName } from '@/lib/brands'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
 const COLUMNS = [
@@ -54,7 +55,7 @@ export function GameTable({ games, sort, onSortChange, onSelect }) {
               </TableCell>
               <TableCell>
                 <span className="flex items-center gap-2">
-                  <BrandLogo name={game.platform?.platformName} className="size-6" />
+                  <BrandLogo name={gameBrandName(game)} className="size-6" />
                   {game.platform?.platformName}
                 </span>
               </TableCell>

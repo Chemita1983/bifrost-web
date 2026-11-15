@@ -27,3 +27,11 @@ const BRANDS = [
 export function findBrand(name) {
   return BRANDS.find((brand) => brand.match.test(name ?? '')) ?? null
 }
+
+// Name whose logo represents a game. On PC the store says more than the
+// Windows logo, so digital PC games use their store (Steam, Epic, GOG…).
+export function gameBrandName(game) {
+  const platform = game.platform?.platformName
+  const store = game.isDigital ? game.digitalPlatform?.digitalPlatformName : undefined
+  return store && /^pc$|windows/i.test(platform ?? '') && findBrand(store) ? store : platform
+}

@@ -23,3 +23,4 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - Platinum filter.
 - Platform and store logos (matched by name) in the catalog tables, game cards, table, detail panel and platform filter.
 - Cover placeholder for games without a Steam cover, using the platform's brand colour and logo.
+- Digital PC games show their store logo (for example Steam) instead of the Windows logo.

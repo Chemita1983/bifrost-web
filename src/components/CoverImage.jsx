@@ -3,14 +3,14 @@ import { Gamepad2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { steamCoverUrl } from '@/features/videogames/collection'
 import { BRAND_ICONS } from './brand-icons'
-import { findBrand } from '@/lib/brands'
+import { findBrand, gameBrandName } from '@/lib/brands'
 
 // Steam cover when the game has a steamAppId. Otherwise (or if the image fails)
 // a placeholder in the platform's brand colour with its logo and the game name.
 export function CoverImage({ game, className }) {
   const [failed, setFailed] = useState(false)
   const showImage = game.steamAppId && !failed
-  const brand = findBrand(game.platform?.platformName)
+  const brand = findBrand(gameBrandName(game))
   const icon = brand && BRAND_ICONS[brand.icon]
 
   return (
