@@ -20,7 +20,8 @@ The frontend for [Bifröst](https://github.com/Chemita1983/Bifrost), a personal 
 ## ✨ Features
 
 - 🎮 **Your whole collection at a glance**: cards with Steam covers, or a compact sortable table.
-- 🔎 **Instant search and filters**: by name (accent-insensitive), platform, digital/physical, completed, multiplayer and type. Everything is filtered in the browser, so it is instant.
+- 🏷️ **Platform and store logos** everywhere. Games without a Steam cover get a placeholder in their platform's colours.
+- 🔎 **Instant search and filters**: by name (accent-insensitive), platform, digital/physical, completed, platinum, multiplayer and type. Everything is filtered in the browser, so it is instant.
 - 📊 **Live counters**: games, completed, platinum trophies and hours played, following the active filters.
 - 📝 **Create, edit and delete games** with a validated form. Edits only send the fields you changed.
 - 🕹️ **Manage platforms and digital stores**, with a clear message when one still has games.
@@ -34,9 +35,9 @@ The frontend for [Bifröst](https://github.com/Chemita1983/Bifrost), a personal 
 | --- | --- |
 | ![Game detail](docs/screenshots/game-detail.png) | ![Edit form](docs/screenshots/edit-form.png) |
 
-| Table view | Steam sync (dry run) |
+| Platforms | Steam sync (dry run) |
 | --- | --- |
-| ![Table view](docs/screenshots/table-view.png) | ![Steam sync](docs/screenshots/steam-sync.png) |
+| ![Platforms](docs/screenshots/platforms.png) | ![Steam sync](docs/screenshots/steam-sync.png) |
 
 | Light mode | Mobile |
 | --- | --- |
@@ -110,6 +111,7 @@ Each feature keeps its raw HTTP calls in `api.js` and its TanStack Query hooks i
 - [Tailwind CSS 4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) (Radix primitives, [Lucide](https://lucide.dev) icons)
 - [TanStack Query 5](https://tanstack.com/query) for data fetching and caching
 - [Sonner](https://sonner.emilkowal.ski) for toasts
+- Brand logos from [Simple Icons](https://simpleicons.org) and [CoreUI Brand Icons](https://coreui.io/icons) (both CC0), embedded as SVG paths in [`src/components/brand-icons.js`](src/components/brand-icons.js)
 
 ## 🗺️ Roadmap
 
@@ -121,4 +123,4 @@ Each feature keeps its raw HTTP calls in `api.js` and its TanStack Query hooks i
 
 [MIT](LICENSE) © 2026 Chemita1983
 
-Game cover images are loaded from the Steam CDN and belong to their respective owners.
+Game cover images are loaded from the Steam CDN, and platform and store logos are trademarks of their respective owners. They are used here only to identify each platform or store.

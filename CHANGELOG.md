@@ -20,3 +20,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - Platform and digital store management, with per-item game counts and a clear `409` message.
 - Steam sync button: always runs a dry run first and asks for confirmation.
 - Dark "gamer" theme by default, with a light mode toggle that is remembered.
+- Platinum filter.
+- Platform and store logos (matched by name) in the catalog tables, game cards, table, detail panel and platform filter.
+- Cover placeholder for games without a Steam cover, using the platform's brand colour and logo.
