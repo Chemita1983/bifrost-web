@@ -19,11 +19,11 @@ The frontend for [Bifröst](https://github.com/Chemita1983/Bifrost), a personal 
 
 ## ✨ Features
 
-- 🎮 **Your whole collection at a glance**: cards with Steam covers, or a compact sortable table.
+- 🎮 **Your whole collection at a glance**: cards with covers (your own cover URL or the Steam one), or a compact sortable table.
 - 🏷️ **Platform and store logos** everywhere. Games without a Steam cover get a placeholder in their platform's colours.
 - 🔎 **Instant search and filters**: by name (accent-insensitive), platform, digital/physical, completed, platinum, multiplayer and type. Everything is filtered in the browser, so it is instant.
 - 📊 **Live counters**: games, completed, platinum trophies and hours played, following the active filters.
-- 📝 **Create, edit and delete games** with a validated form. Edits only send the fields you changed.
+- 📝 **Create, edit and delete games** with a validated form, including a cover URL with live preview. Edits only send the fields you changed.
 - 🕹️ **Manage platforms and digital stores**, with a clear message when one still has games.
 - 🔄 **Safe Steam sync**: a dry run shows what would change, and nothing is saved until you confirm.
 - 🌙 **Dark "gamer" theme** by default, with a light mode that is remembered.

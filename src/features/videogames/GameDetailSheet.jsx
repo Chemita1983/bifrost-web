@@ -25,7 +25,7 @@ export function GameDetailSheet({ game, onOpenChange, onEdit, onDelete }) {
       <SheetContent className="w-full gap-0 overflow-y-auto sm:max-w-md">
         {game && (
           <>
-            <CoverImage game={game} />
+            <CoverImage key={game.coverUrl ?? ''} game={game} />
             <SheetHeader>
               <SheetTitle className="text-xl">{game.videogameName}</SheetTitle>
               <SheetDescription>

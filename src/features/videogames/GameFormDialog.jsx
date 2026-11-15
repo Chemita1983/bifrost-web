@@ -7,7 +7,8 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 import { usePlatforms, useStores } from '@/features/catalogs/queries'
-import { toCreateBody, toFormValues, toPatchBody, validate } from './gameForm'
+import { CoverImage } from '@/components/CoverImage'
+import { isHttpUrl, toCreateBody, toFormValues, toPatchBody, validate } from './gameForm'
 import { useCreateVideogame, useUpdateVideogame } from './queries'
 
 function FormField({ id, label, error, hint, children }) {
@@ -45,7 +46,11 @@ function GameForm({ game, types, onDone }) {
   const update = useUpdateVideogame()
   const mutation = isEdit ? update : create
 
-  const set = (name) => (value) => setValues((current) => ({ ...current, [name]: value }))
+  const set = (name) => (value) => {
+    setValues((current) => ({ ...current, [name]: value }))
+    // Editing a field clears its error; the rest are checked again on submit.
+    setErrors((current) => (current[name] ? { ...current, [name]: undefined } : current))
+  }
   const inputProps = (name) => ({
     id: name,
     value: values[name],
@@ -140,6 +145,33 @@ function GameForm({ game, types, onDone }) {
             </SelectContent>
           </Select>
         </FormField>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-[1fr_11rem] sm:items-start">
+        <FormField
+          id="coverUrl"
+          label="URL de la carátula"
+          error={errors.coverUrl}
+          hint={game?.steamAppId ? 'Opcional. Si la dejas vacía se usa la de Steam.' : 'Opcional. Pega la dirección de una imagen (http o https).'}
+        >
+          <Input {...inputProps('coverUrl')} type="url" inputMode="url" placeholder="https://…/caratula.jpg" />
+        </FormField>
+        {/* Live preview: the same component the cards use, with the URL being typed. */}
+        <div className="grid gap-1.5">
+          <span className="text-sm font-medium">Vista previa</span>
+          <CoverImage
+            key={values.coverUrl.trim()}
+            className="rounded-lg border"
+            game={{
+              ...game,
+              videogameName: values.videogameName || 'Nuevo juego',
+              platform: platforms.data?.find((p) => String(p.id) === values.platformId),
+              isDigital: values.isDigital,
+              digitalPlatform: stores.data?.find((s) => String(s.id) === values.digitalPlatformId),
+              coverUrl: isHttpUrl(values.coverUrl.trim()) ? values.coverUrl.trim() : undefined,
+            }}
+          />
+        </div>
       </div>
 
       <div className="grid gap-2 sm:grid-cols-2">
